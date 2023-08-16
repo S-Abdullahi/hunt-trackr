@@ -19,7 +19,7 @@ function App() {
         <Route path="/all-jobs" element={<AllJobs />} />
         <Route path="/add-jobs" element={<AddJobs />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<Error/>}/>
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );
