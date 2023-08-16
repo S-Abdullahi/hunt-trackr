@@ -32,8 +32,8 @@ const Landing = () => {
         <Button text="Get Started" link="/login" />
       </motion.div>
       <motion.div
-        className="w-2/3 m-auto -mr-30"
-        animate={{ x: -50 }}
+        className="w-2/3 m-auto"
+        animate={{ x: 0 }}
         transition={{ ease: "easeOut", duration: 2 }}
       >
         <img src={landing} alt="job hunt" />
