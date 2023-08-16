@@ -2,16 +2,24 @@ import React from "react";
 import Button from "../components/Button";
 import landing from "../assets/jobhunt.svg";
 import { motion } from "framer-motion";
+import logo from "../assets/logo.png";
 
 const Landing = () => {
   return (
-    <div className="bg-[#fbfbfb] py-10 px-4 lg:grid lg:grid-cols-2 lg:items-center h-screen lg:w-full lg:px-10 lg:gap-7">
+    <div className="bg-[#fbfbfb] py-10 px-4 h-screen">
+      <div className="flex items-center gap-2">
+        <img src={logo} alt="logo" />
+        <p className="font-extrabold text-xl text-[#fd5732]">HuntTrackr</p>
+      </div>
+
+      <div className="lg:grid lg:grid-cols-2 lg:items-center  lg:w-full lg:px-10 lg:gap-7">
+      
       <motion.div
-        className="mb-6 -ml-10"
-        animate={{ x: 30 }}
+        className="mb-6"
+        animate={{ x: 0}}
         transition={{ ease: "easeOut", duration: 1 }}
       >
-        <h1 className="text-3xl lg:text-5xl lg:gap-4 mb-3 font-bold text-[#232121]">
+        <h1 className="text-3xl lg:text-5xl lg:gap-4 mb-3 font-bold text-[#232121] mt-10 lg:mt-0">
           Job Application <span className="text-[#fd5732]">Tracking</span> App
         </h1>
         <p className="lg:2/3 mb-4 text-[#232121]">
@@ -31,6 +39,8 @@ const Landing = () => {
         <img src={landing} alt="job hunt" />
       </motion.div>
     </div>
+    </div>
+
   );
 };
 
