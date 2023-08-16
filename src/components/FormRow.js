@@ -1,6 +1,6 @@
 import React from "react";
 
-const FormRow = ({type, name, value, onChange, placeholder }) => {
+const FormRow = ({type, name, value, onChange }) => {
   return (
     <>
     <div className="mb-1 text-gray-400">{name}</div>

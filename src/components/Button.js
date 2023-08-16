@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 
 const Button = ({ text, link, type }) => {
   return (
-    <button type={type ? type : 'button'} className="bg-[#fd5732] text-white px-2 py-1 rounded hover:bg-[#fd5732e4]">
-      <Link to={link}>{text}</Link>
-    </button>
+    <Link
+      to={link ? link : ''}
+      className="bg-[#fd5732] text-white px-2 py-1 rounded hover:bg-[#fd5732e4] text-center"
+    >
+      <button type={type ? type : "button"}>{text}</button>
+    </Link>
   );
 };
 
