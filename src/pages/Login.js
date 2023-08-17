@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import Button from "../components/Button";
 import FormRow from "../components/FormRow";
 import logo from "../assets/logo.png";
 import { toast } from "react-toastify";
-import { registerUser } from "../Features/users/UserSlice";
+import { registerUser, loginUser } from "../Features/users/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -38,6 +37,7 @@ const Login = () => {
       dispatch(registerUser({ name, email, password }));
       return;
     }
+    dispatch(loginUser({ email, password }));
   };
 
   React.useEffect(() => {
