@@ -3,6 +3,8 @@ import Button from "../components/Button";
 import FormRow from "../components/FormRow";
 import logo from "../assets/logo.png";
 import { toast } from "react-toastify";
+import { registerUser } from "../Features/users/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const initialFormState = {
   name: "",
@@ -12,6 +14,8 @@ const initialFormState = {
 };
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const { isLoading } = useSelector((store) => store.user);
   const [isUser, setIsUser] = React.useState(false);
   const [formData, setFormData] = useState(initialFormState);
 
@@ -26,9 +30,12 @@ const Login = () => {
       toast.error("fill all required fields", {
         position: toast.POSITION.TOP_CENTER,
       });
+      return;
     }
-    const data = { email, password, name };
-    console.log(data);
+    if (!isUser) {
+      dispatch(registerUser({ name, email, password }));
+      return;
+    }
   };
 
   return (
@@ -65,7 +72,13 @@ const Login = () => {
             type="submit"
             className="bg-[#fd5732] text-white px-2 py-1 rounded hover:bg-[#fd5732e4] text-center"
           >
-            login
+            {isUser
+              ? isLoading
+                ? "Logging in..."
+                : "Login"
+              : isLoading
+              ? "Creating User..."
+              : "Register"}
           </button>
         </form>
         <p className="px-3">
