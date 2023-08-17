@@ -41,6 +41,7 @@ export const userSlice = createSlice({
     [registerUser.fulfilled]: (state, { payload }) => {
       const { user } = payload;
       state.isLoading = false;
+      state.user = user;
       addUserToLocalStorage(user);
       toast.success(`Account Created, Dear ${user.name.split(' ')[0]}`, toastPosition);
     },

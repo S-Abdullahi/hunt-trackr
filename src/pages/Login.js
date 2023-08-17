@@ -5,6 +5,7 @@ import logo from "../assets/logo.png";
 import { toast } from "react-toastify";
 import { registerUser } from "../Features/users/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const initialFormState = {
   name: "",
@@ -15,9 +16,10 @@ const initialFormState = {
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((store) => store.user);
+  const { isLoading, user } = useSelector((store) => store.user);
   const [isUser, setIsUser] = React.useState(false);
   const [formData, setFormData] = useState(initialFormState);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,6 +39,14 @@ const Login = () => {
       return;
     }
   };
+
+  React.useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 2000);
+    }
+  }, [user]);
 
   return (
     <div className="h-screen w-full bg-[#fbfbfb] flex justify-center items-center">
