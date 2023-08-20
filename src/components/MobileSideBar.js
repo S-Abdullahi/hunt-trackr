@@ -35,7 +35,7 @@ const sideMenuItem = [
 const MobileSideBar = ({ open, setOpenSideBar }) => {
   return (
     <div
-      className={`flex flex-col justify-between pt-2 bg-white border-t-[1px] md:hidden absolute h-[calc(100%-48px)] w-2/3 ${
+      className={`flex flex-col justify-between pt-2 bg-white border-t-[1px] md:hidden absolute h-[calc(100%-48px)] w-1/2 ${
         open ? "m-0" : "-m-[100%]"
       }`}
     >
