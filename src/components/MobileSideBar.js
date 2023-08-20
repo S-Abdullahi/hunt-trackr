@@ -32,10 +32,10 @@ const sideMenuItem = [
   },
 ];
 
-const MobileSideBar = ({ open }) => {
+const MobileSideBar = ({ open, setOpenSideBar }) => {
   return (
     <div
-      className={`flex flex-col justify-between pt-2 bg-white border-t-[1px] md:hidden absolute h-[calc(100%-40px)] w-2/3 ${
+      className={`flex flex-col justify-between pt-2 bg-white border-t-[1px] md:hidden absolute h-[calc(100%-48px)] w-2/3 ${
         open ? "m-0" : "-m-[100%]"
       }`}
     >
@@ -44,8 +44,12 @@ const MobileSideBar = ({ open }) => {
           {sideMenuItem.map((item) => {
             const { name, url, icon } = item;
             return (
-              <li className="text-sm mb-4 hover:bg-[#fd5732] hover:text-white pl-4 py-1 hover:ease-in-out">
-                <Link to="" className="flex items-center gap-2">
+              <li
+                key={name}
+                className="text-sm mb-4 hover:bg-[#fd5732] hover:text-white pl-4 py-1 hover:ease-in-out"
+                onClick={() => setOpenSideBar(false)}
+              >
+                <Link to={url} className="flex items-center gap-2">
                   {icon} {name}
                 </Link>
               </li>

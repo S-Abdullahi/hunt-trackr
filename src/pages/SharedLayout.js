@@ -50,7 +50,7 @@ const SharedLayout = () => {
               const { name, url, icon } = item;
               return (
                 <li className="text-base mb-4 hover:bg-[#fd5732] hover:text-white pl-4 py-1 hover:ease-in-out">
-                  <Link to="" className="flex items-center gap-2">
+                  <Link to={url} className="flex items-center gap-2">
                     {icon} {name}
                   </Link>
                 </li>
@@ -67,15 +67,15 @@ const SharedLayout = () => {
         </Link>
       </div>
       <div className={"col-span-12 md:col-span-10 relative"}>
-        <div className="h-10 flex items-center justify-between md:justify-between px-4">
+        <div className="h-12 flex items-center justify-between md:justify-between px-4">
           {/* header bar logo for mobile screen */}
           <div className="flex items-center gap-2 mb-3 mt-2 md:hidden">
-            <img src={logo} alt="logo" className="w-6" />
-            <p className="font-extrabold text-sm text-[#fd5732]">HuntTrackr</p>
+            <img src={logo} alt="logo" className="w-8" />
+            <p className="font-extrabold text-lg text-[#fd5732]">HuntTrackr</p>
           </div>
           <div className="">
             <BiMenu
-              className="cursor-pointer"
+              className="cursor-pointer text-2xl"
               onClick={() => setOpenSideBar(!openSideBar)}
             />
           </div>
@@ -84,10 +84,10 @@ const SharedLayout = () => {
           </div>
         </div>
         {/* mobile side bar */}
-        <MobileSideBar open={openSideBar} />
+        <MobileSideBar open={openSideBar} setOpenSideBar={setOpenSideBar} />
         {openSideBar && (
           <div
-            className="h-[calc(100%-40px)] bg-[#0001] sm:hidden"
+            className="h-[calc(100%-48px)] bg-[#0001] sm:hidden"
             onClick={() => setOpenSideBar(!openSideBar)}
           ></div>
         )}
