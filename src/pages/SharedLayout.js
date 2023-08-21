@@ -9,6 +9,8 @@ import { MdLogout } from "react-icons/md";
 import { BiMenu } from "react-icons/bi";
 import { BsPersonCircle } from "react-icons/bs";
 import MobileSideBar from "../components/MobileSideBar";
+import { logOut } from "../Features/users/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const sideMenuItem = [
   {
@@ -35,6 +37,8 @@ const sideMenuItem = [
 
 const SharedLayout = () => {
   const [openSideBar, setOpenSideBar] = React.useState(false);
+  const dispatch = useDispatch()
+  const {user} = useSelector((store)=>store.user)
   return (
     <div className="h-screen overflow-hidden grid grid-cols-12">
       <div
@@ -60,8 +64,8 @@ const SharedLayout = () => {
         </div>
 
         <Link
-          to="/login"
           className="flex items-center justify-center pb-6 text-red-400 gap-2"
+          onClick={()=>dispatch(logOut())}
         >
           <MdLogout /> Logout
         </Link>
@@ -80,7 +84,7 @@ const SharedLayout = () => {
             />
           </div>
           <div className="text-xs hidden md:flex items-center gap-1 ">
-            <BsPersonCircle /> Salawu Abdullahi
+            <BsPersonCircle /> {user.name}
           </div>
         </div>
         {/* mobile side bar */}
