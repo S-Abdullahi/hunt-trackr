@@ -7,11 +7,12 @@ const FormSelect = ({ selectOptions, onChange, name, value }) => {
       <select
         name={name}
         onChange={onChange}
+        value={value}
         className="mb-5 px-2 h-10 rounded-sm border focus:border-[#fd5732] focus:outline-none text-[gray] w-full cursor-pointer"
       >
         {selectOptions.map((item) => {
           return (
-            <option className="" value={value}>
+            <option className="" key={item}>
               {item}
             </option>
           );

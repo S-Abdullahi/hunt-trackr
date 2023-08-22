@@ -4,6 +4,9 @@ import FormSelect from "../components/FormSelect";
 import { useSelector, useDispatch } from "react-redux";
 import { addJob } from "../Features/users/addJobs/AddJobsSlice";
 import { handleChange } from "../Features/users/addJobs/AddJobsSlice";
+import { toast } from "react-toastify";
+import { toastPosition } from "../helper";
+import Loader from "../components/loader";
 
 const AddJobs = () => {
   const {
@@ -14,6 +17,7 @@ const AddJobs = () => {
     jobLocation,
     statusOption,
     jobTypeOption,
+    isLoading
   } = useSelector((store) => store.addJobs);
   const dispatch = useDispatch();
 
@@ -22,11 +26,20 @@ const AddJobs = () => {
     const value = e.target.value;
     dispatch(handleChange({ name, value }));
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!position || !company || !jobLocation) {
+      toast.error("Fill all fields", toastPosition);
+      return;
+    }
+    dispatch(addJob({ position, company, jobLocation, status, jobType }))
+  };
   return (
     <div className="flex justify-center items-center pt-10">
       <div className="bg-white p-4 w-[80%] sm:w-[60%] md:w-1/2 shadow-md">
         <p className="text-center text-lg mb-6">Add Job</p>
-        <form className="flex flex-col">
+        <form className="flex flex-col" onSubmit={handleSubmit}>
           <FormRow name="position" value={position} onChange={handleOnChange} />
           <FormRow name="company" value={company} onChange={handleOnChange} />
           <FormRow
@@ -56,7 +69,7 @@ const AddJobs = () => {
               type="submit"
               className="rounded-sm text-white bg-[#fd5732] py-2 w-full"
             >
-              Submit
+              {isLoading ? 'creating...' : 'Submit'}
             </button>
           </div>
         </form>

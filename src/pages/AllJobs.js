@@ -1,8 +1,11 @@
 import React from 'react'
+import Loader from '../components/loader'
 
 const AllJobs = () => {
   return (
-    <div>AllJobs</div>
+    <div>
+      <Loader/>
+    </div>
   )
 }
 
