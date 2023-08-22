@@ -17,7 +17,7 @@ const AddJobs = () => {
     jobLocation,
     statusOption,
     jobTypeOption,
-    isLoading
+    isLoading,
   } = useSelector((store) => store.addJobs);
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ const AddJobs = () => {
       toast.error("Fill all fields", toastPosition);
       return;
     }
-    dispatch(addJob({ position, company, jobLocation, status, jobType }))
+    dispatch(addJob({ position, company, jobLocation, status, jobType }));
   };
   return (
     <div className="flex justify-center items-center pt-10">
@@ -69,7 +69,7 @@ const AddJobs = () => {
               type="submit"
               className="rounded-sm text-white bg-[#fd5732] py-2 w-full"
             >
-              {isLoading ? 'creating...' : 'Submit'}
+              {isLoading ? "creating..." : "Submit"}
             </button>
           </div>
         </form>
