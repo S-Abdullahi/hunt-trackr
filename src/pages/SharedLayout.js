@@ -40,9 +40,9 @@ const SharedLayout = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
   return (
-    <div className=" grid grid-cols-12 relative">
+    <div className=" grid grid-cols-12 relative h-screen overflow-y-auto">
       <div
-        className={`col-span-2 md:flex md:flex-col md:justify-between pt-2 hidden h-screen bg-white sticky top-0`}
+        className={'col-span-2 md:flex md:flex-col md:justify-between pt-2 hidden bg-white h-screen sticky top-0'}
       >
         <div className="">
           <div className="flex items-center gap-2 mt-2 mb-3 pl-4">
@@ -70,7 +70,7 @@ const SharedLayout = () => {
           <MdLogout /> Logout
         </Link>
       </div>
-      <div className={"col-span-12 md:col-span-10 relative"}>
+      <div className={"col-span-12 md:col-span-10 relative "}>
         <div className="h-12 flex items-center justify-between md:justify-between px-4 bg-white sticky top-0 z-10">
           {/* header bar logo for mobile screen */}
           <div className="flex items-center gap-2 mb-3 mt-2 md:hidden">
@@ -83,7 +83,7 @@ const SharedLayout = () => {
               onClick={() => setOpenSideBar(!openSideBar)}
             />
           </div>
-          <div className="text-xs hidden md:flex items-center gap-1 ">
+          <div className="text-base hidden md:flex items-center gap-1 ">
             <BsPersonCircle /> {user.name}
           </div>
         </div>
@@ -96,7 +96,7 @@ const SharedLayout = () => {
           ></div>
         )} */}
 
-        <div className="bg-[#f1f1f1] h-full overflow-y-auto">
+        <div className="h-full bg-[#f1f1f1] overflow-y-scroll">
           <Outlet />
         </div>
       </div>
