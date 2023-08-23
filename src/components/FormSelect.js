@@ -2,7 +2,7 @@ import React from "react";
 
 const FormSelect = ({ selectOptions, onChange, name, value }) => {
   return (
-    <div className="w-[100%] ">
+    <div className="w-[100%] min-w-[100px]">
       <div className="mb-1 text-gray-600 text-sm">{name}</div>
       <select
         name={name}
