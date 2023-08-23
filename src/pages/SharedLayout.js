@@ -40,14 +40,14 @@ const SharedLayout = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
   return (
-    <div className="h-screen overflow-hidden grid grid-cols-12">
+    <div className=" grid grid-cols-12 relative">
       <div
-        className={`col-span-2 md:flex flex-col justify-between pt-2 hidden`}
+        className={`col-span-2 md:flex md:flex-col md:justify-between pt-2 hidden h-screen bg-green-300`}
       >
         <div className="">
-          <div className="flex items-center gap-2 mb-3 pl-4">
-            <img src={logo} alt="logo" />
-            <p className="font-extrabold text-xl text-[#fd5732]">HuntTrackr</p>
+          <div className="flex items-center gap-2 mt-2 mb-3 pl-4">
+            <img src={logo} alt="logo" className="w-[20%] lg:w-[30%]"/>
+            <p className="font-extrabold text-sm lg:text-base text-[#fd5732]">HuntTrackr</p>
           </div>
           <ul className="mt-16">
             {sideMenuItem.map((item) => {
@@ -71,7 +71,7 @@ const SharedLayout = () => {
         </Link>
       </div>
       <div className={"col-span-12 md:col-span-10 relative"}>
-        <div className="h-12 flex items-center justify-between md:justify-between px-4">
+        <div className="h-12 flex items-center justify-between md:justify-between px-4 ">
           {/* header bar logo for mobile screen */}
           <div className="flex items-center gap-2 mb-3 mt-2 md:hidden">
             <img src={logo} alt="logo" className="w-8" />
