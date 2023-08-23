@@ -96,7 +96,7 @@ const SharedLayout = () => {
           ></div>
         )}
 
-        <div className="bg-[#f1f1f1] h-full">
+        <div className="bg-[#f1f1f1] h-full overflow-y-auto">
           <Outlet />
         </div>
       </div>
