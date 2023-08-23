@@ -37,8 +37,8 @@ const sideMenuItem = [
 
 const SharedLayout = () => {
   const [openSideBar, setOpenSideBar] = React.useState(false);
-  const dispatch = useDispatch()
-  const {user} = useSelector((store)=>store.user)
+  const dispatch = useDispatch();
+  const { user } = useSelector((store) => store.user);
   return (
     <div className="h-screen overflow-hidden grid grid-cols-12">
       <div
@@ -65,7 +65,7 @@ const SharedLayout = () => {
 
         <Link
           className="flex items-center justify-center pb-6 text-red-400 gap-2"
-          onClick={()=>dispatch(logOut())}
+          onClick={() => dispatch(logOut())}
         >
           <MdLogout /> Logout
         </Link>
