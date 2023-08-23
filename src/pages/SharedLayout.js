@@ -42,7 +42,7 @@ const SharedLayout = () => {
   return (
     <div className=" grid grid-cols-12 relative">
       <div
-        className={`col-span-2 md:flex md:flex-col md:justify-between pt-2 hidden h-screen bg-green-300`}
+        className={`col-span-2 md:flex md:flex-col md:justify-between pt-2 hidden h-screen bg-white sticky top-0`}
       >
         <div className="">
           <div className="flex items-center gap-2 mt-2 mb-3 pl-4">
@@ -71,7 +71,7 @@ const SharedLayout = () => {
         </Link>
       </div>
       <div className={"col-span-12 md:col-span-10 relative"}>
-        <div className="h-12 flex items-center justify-between md:justify-between px-4 ">
+        <div className="h-12 flex items-center justify-between md:justify-between px-4 bg-white sticky top-0 z-10">
           {/* header bar logo for mobile screen */}
           <div className="flex items-center gap-2 mb-3 mt-2 md:hidden">
             <img src={logo} alt="logo" className="w-8" />
@@ -89,12 +89,12 @@ const SharedLayout = () => {
         </div>
         {/* mobile side bar */}
         <MobileSideBar open={openSideBar} setOpenSideBar={setOpenSideBar} />
-        {openSideBar && (
+        {/* {openSideBar && (
           <div
             className="h-[calc(100%-48px)] bg-[#0001] sm:hidden"
             onClick={() => setOpenSideBar(!openSideBar)}
           ></div>
-        )}
+        )} */}
 
         <div className="bg-[#f1f1f1] h-full overflow-y-auto">
           <Outlet />
