@@ -23,6 +23,7 @@ export const addJob = createAsyncThunk(
           authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
         },
       });
+      thunkAPI.dispatch(handleClear());
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.msg);
@@ -37,6 +38,9 @@ export const addJobSlice = createSlice({
     handleChange: (state, { payload }) => {
       const { name, value } = payload;
       state[name] = value;
+    },
+    handleClear: () => {
+      return { ...initialState };
     },
   },
   extraReducers: {
@@ -55,4 +59,4 @@ export const addJobSlice = createSlice({
 });
 
 export default addJobSlice.reducer;
-export const { handleChange } = addJobSlice.actions;
+export const { handleChange, handleClear } = addJobSlice.actions;

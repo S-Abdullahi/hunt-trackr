@@ -2,20 +2,13 @@ import React from "react";
 import TableHead from "./TableHead";
 import TableRow from "./TableRow";
 
-const DataTable = () => {
+const DataTable = ({ jobs }) => {
   return (
     <table className="flex-grow bg-white shadow-md rounded-sm mx-4 mt-10">
       <TableHead />
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
-      <TableRow/>
+      {jobs?.map((job) => {
+        return <TableRow {...job} key={job?._id} />;
+      })}
     </table>
   );
 };
