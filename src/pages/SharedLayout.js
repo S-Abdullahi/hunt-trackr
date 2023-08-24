@@ -53,7 +53,7 @@ const SharedLayout = () => {
             {sideMenuItem.map((item) => {
               const { name, url, icon } = item;
               return (
-                <li className="text-base mb-4 hover:bg-[#fd5732] hover:text-white pl-4 py-1 hover:ease-in-out">
+                <li className="text-base mb-4 hover:bg-[#fd5732] hover:text-white pl-4 py-1 hover:ease-in-out" key={name}>
                   <Link to={url} className="flex items-center gap-2">
                     {icon} {name}
                   </Link>
