@@ -36,6 +36,7 @@ export const getAllJobs = createAsyncThunk(
   }
 );
 
+
 export const allJobsSlice = createSlice({
   name: "allJobs",
   initialState,

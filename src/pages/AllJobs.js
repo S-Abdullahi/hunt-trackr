@@ -9,11 +9,25 @@ import {
   handleSearch,
   clearSearchState,
 } from "../Features/users/allJobs/allJobsSlice";
+import GridView from "../components/Grid/GridView";
+import { GrTable } from "react-icons/gr";
+import { TfiViewGrid } from "react-icons/tfi";
 
 const AllJobs = () => {
   const { search, status, jobType, sortOption, sort, jobs } = useSelector(
     (store) => store.allJobs
   );
+  const [displayView, setDisplayView] = React.useState("table");
+  const displayOption = [
+    {
+      name: "table",
+      icon: <GrTable />,
+    },
+    {
+      name: "grid",
+      icon: <TfiViewGrid />,
+    },
+  ];
 
   const dispatch = useDispatch();
   const { statusOption, jobTypeOption } = useSelector((store) => store.addJobs);
@@ -33,13 +47,13 @@ const AllJobs = () => {
         <FormRow name="search" value={search} onChange={handleChange} />
         <FormSelect
           name="status"
-          selectOptions={['all',...statusOption]}
+          selectOptions={["all", ...statusOption]}
           value={status}
           onChange={handleChange}
         />
         <FormSelect
           name="jobType"
-          selectOptions={['all',...jobTypeOption]}
+          selectOptions={["all", ...jobTypeOption]}
           value={jobType}
           onChange={handleChange}
         />
@@ -57,7 +71,23 @@ const AllJobs = () => {
         </button>
       </div>
 
-      <DataTable jobs={jobs} />
+      {/* view option buttons */}
+      <div>
+        {displayOption.map((view) => (
+          <button
+            onClick={() => setDisplayView(view.name)}
+            className={`ml-4 p-1 rounded-md shadow-md hover:bg-gray-300  ${
+              view.name === displayView
+                ? "bg-gray-400 text-white"
+                : "bg-gray-200 mt-4 border border-gray-400 text-gray-400"
+            }`}
+          >
+            {view.icon}
+          </button>
+        ))}
+      </div>
+
+      {displayView === "table" ? <DataTable jobs={jobs} /> : <GridView />}
     </div>
   );
 };

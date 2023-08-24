@@ -1,5 +1,8 @@
 import React from "react";
 import { FiEdit } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setEditJob } from "../../Features/users/addJobs/AddJobsSlice";
 
 const TableRow = ({
   _id,
@@ -10,6 +13,7 @@ const TableRow = ({
   jobLocation,
   createdAt,
 }) => {
+  const navigate = useNavigate();
   let statusBg;
   if (status === "pending") {
     statusBg = "bg-yellow-200";
@@ -31,7 +35,20 @@ const TableRow = ({
           </div>
         </td>
         <td className=" hidden sm:flex justify-center items-center">
-          <FiEdit />
+          <FiEdit
+            className="text-gray-400 hover:text-gray-500"
+            onClick={() => {
+              navigate("/add-jobs");
+              setEditJob({
+                jobId: _id,
+                position,
+                company,
+                jobType,
+                jobLocation,
+                status,
+              });
+            }}
+          />
         </td>
       </tr>
     </tbody>

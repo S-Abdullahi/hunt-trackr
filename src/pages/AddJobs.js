@@ -7,6 +7,7 @@ import { handleChange } from "../Features/users/addJobs/AddJobsSlice";
 import { toast } from "react-toastify";
 import { toastPosition } from "../helper";
 import Loader from "../components/loader";
+import { editJob } from "../Features/users/addJobs/AddJobsSlice";
 
 const AddJobs = () => {
   const {
@@ -18,6 +19,8 @@ const AddJobs = () => {
     statusOption,
     jobTypeOption,
     isLoading,
+    isEditing,
+    jobId,
   } = useSelector((store) => store.addJobs);
   const dispatch = useDispatch();
 
