@@ -4,6 +4,8 @@ import { BsCalendarDate } from "react-icons/bs";
 import { MdWorkOutline } from "react-icons/md";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
+import { setEditJob } from "../../Features/users/addJobs/AddJobsSlice";
+import { useDispatch } from "react-redux";
 
 const GridCard = ({
   position,
@@ -12,8 +14,10 @@ const GridCard = ({
   status,
   createdAt,
   jobType,
+  _id,
 }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   let statusBg;
   if (status === "pending") {
     statusBg = "bg-yellow-100";
@@ -64,9 +68,22 @@ const GridCard = ({
           </div>
         </div>
         <div className="flex gap-2 mt-3">
-          <button className=" bg-blue-50 border-[1px] border-blue-300 hover:bg-blue-100 px-2 py-1 rounded text-sm" onClick={()=>{
-            navigate('/add-jobs')
-          }}>
+          <button
+            className=" bg-blue-50 border-[1px] border-blue-300 hover:bg-blue-100 px-2 py-1 rounded text-sm"
+            onClick={() => {
+              navigate("/add-jobs");
+              dispatch(
+                setEditJob({
+                  jobId: _id,
+                  position,
+                  company,
+                  jobType,
+                  jobLocation,
+                  status,
+                })
+              );
+            }}
+          >
             Edit
           </button>
           <button className="bg-red-50 border-[1px] border-red-300 hover:bg-red-100 px-2 py-1 text-sm rounded">

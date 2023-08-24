@@ -13,6 +13,7 @@ const TableRow = ({
   jobLocation,
   createdAt,
 }) => {
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   let statusBg;
   if (status === "pending") {
@@ -39,14 +40,14 @@ const TableRow = ({
             className="text-gray-400 hover:text-gray-500"
             onClick={() => {
               navigate("/add-jobs");
-              setEditJob({
+              dispatch(setEditJob({
                 jobId: _id,
                 position,
                 company,
                 jobType,
                 jobLocation,
                 status,
-              });
+              }));
             }}
           />
         </td>
