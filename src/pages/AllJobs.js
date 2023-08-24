@@ -87,7 +87,7 @@ const AllJobs = () => {
         ))}
       </div>
 
-      {displayView === "table" ? <DataTable jobs={jobs} /> : <GridView />}
+      {displayView === "table" ? <DataTable jobs={jobs} /> : <GridView jobs={jobs}/>}
     </div>
   );
 };
