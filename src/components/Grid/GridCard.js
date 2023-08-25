@@ -6,6 +6,7 @@ import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { setEditJob } from "../../Features/users/addJobs/AddJobsSlice";
 import { useDispatch } from "react-redux";
+import { deleteJob } from "../../Features/users/addJobs/AddJobsSlice";
 
 const GridCard = ({
   position,
@@ -86,7 +87,12 @@ const GridCard = ({
           >
             Edit
           </button>
-          <button className="bg-red-50 border-[1px] border-red-300 hover:bg-red-100 px-2 py-1 text-sm rounded">
+          <button
+            className="bg-red-50 border-[1px] border-red-300 hover:bg-red-100 px-2 py-1 text-sm rounded"
+            onClick={() => {
+              dispatch(deleteJob(_id));
+            }}
+          >
             Delete
           </button>
         </div>

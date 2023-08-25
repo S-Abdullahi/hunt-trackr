@@ -37,6 +37,7 @@ const sideMenuItem = [
 
 const SharedLayout = () => {
   const [openSideBar, setOpenSideBar] = React.useState(false);
+  const [activeMenu, setActiveMenu] = React.useState('Dashboard');
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.user);
   return (
@@ -53,7 +54,7 @@ const SharedLayout = () => {
             {sideMenuItem.map((item) => {
               const { name, url, icon } = item;
               return (
-                <li className="text-base mb-4 hover:bg-[#fd5732] hover:text-white pl-4 py-1 hover:ease-in-out" key={name}>
+                <li className={`text-base mb-4 hover:bg-[#fd5732] hover:text-white pl-4 py-1 hover:ease-in-out ${activeMenu === name & 'bg-[#fd5732] text-white'}}`} key={name} onClick={()=>setActiveMenu(name)}>
                   <Link to={url} className="flex items-center gap-2">
                     {icon} {name}
                   </Link>

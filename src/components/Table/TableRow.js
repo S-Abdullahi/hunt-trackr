@@ -3,6 +3,8 @@ import { FiEdit } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setEditJob } from "../../Features/users/addJobs/AddJobsSlice";
+import { deleteJob } from "../../Features/users/addJobs/AddJobsSlice";
+import { MdDeleteOutline } from "react-icons/md";
 
 const TableRow = ({
   _id,
@@ -13,7 +15,7 @@ const TableRow = ({
   jobLocation,
   createdAt,
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   let statusBg;
   if (status === "pending") {
@@ -35,19 +37,27 @@ const TableRow = ({
             {status}
           </div>
         </td>
-        <td className=" hidden sm:flex justify-center items-center">
+        <td className=" hidden sm:flex justify-center gap-6 items-center">
           <FiEdit
             className="text-gray-400 hover:text-gray-500"
             onClick={() => {
               navigate("/add-jobs");
-              dispatch(setEditJob({
-                jobId: _id,
-                position,
-                company,
-                jobType,
-                jobLocation,
-                status,
-              }));
+              dispatch(
+                setEditJob({
+                  jobId: _id,
+                  position,
+                  company,
+                  jobType,
+                  jobLocation,
+                  status,
+                })
+              );
+            }}
+          />
+          <MdDeleteOutline
+            className="text-red-300 cursor-pointer hover:text-red-400"
+            onClick={() => {
+              dispatch(deleteJob(_id));
             }}
           />
         </td>
