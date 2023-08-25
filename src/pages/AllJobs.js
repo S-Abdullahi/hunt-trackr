@@ -11,7 +11,8 @@ import {
 } from "../Features/users/allJobs/allJobsSlice";
 import GridView from "../components/Grid/GridView";
 import { GrTable } from "react-icons/gr";
-import { TfiViewGrid } from "react-icons/tfi";
+import { TfiViewGrid, TfiMenuAlt } from "react-icons/tfi";
+
 
 const AllJobs = () => {
   const { search, status, jobType, sortOption, sort, jobs } = useSelector(
@@ -21,7 +22,7 @@ const AllJobs = () => {
   const displayOption = [
     {
       name: "table",
-      icon: <GrTable />,
+      icon: <TfiMenuAlt />,
     },
     {
       name: "grid",
@@ -72,22 +73,35 @@ const AllJobs = () => {
       </div>
 
       {/* view option buttons */}
-      <div>
-        {displayOption.map((view) => (
-          <button
-            onClick={() => setDisplayView(view.name)}
-            className={`ml-4 p-1 rounded-md shadow-md hover:bg-gray-300  ${
-              view.name === displayView
-                ? "bg-gray-400 text-white"
-                : "bg-gray-200 mt-4 border border-gray-400 text-gray-400"
-            }`}
-          >
-            {view.icon}
-          </button>
-        ))}
+
+      <div className="ml-4 flex items-center gap-3">
+        <div className="mt-3">
+          {" "}
+          {`${jobs.length} Job${jobs.length > 1 ? "s" : ""} Found`}
+        </div>
+        {jobs.length > 0 && (
+          <div className="">
+            {displayOption.map((view) => (
+              <button
+                onClick={() => setDisplayView(view.name)}
+                className={` p-1 rounded hover:bg-gray-300 mr-3 ${
+                  view.name === displayView
+                    ? "bg-gray-600 text-white border-gray-700"
+                    : "bg-gray-200 mt-4 border text-gray-400"
+                }`}
+              >
+                {view.icon}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
-      {displayView === "table" ? <DataTable jobs={jobs} /> : <GridView jobs={jobs}/>}
+      {displayView === "table" ? (
+        <DataTable jobs={jobs} />
+      ) : (
+        <GridView jobs={jobs} />
+      )}
     </div>
   );
 };

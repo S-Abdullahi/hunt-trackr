@@ -55,7 +55,7 @@ const TableRow = ({
             }}
           />
           <MdDeleteOutline
-            className="text-red-300 cursor-pointer hover:text-red-400"
+            className="text-red-300 cursor-pointer hover:text-red-400 text-base"
             onClick={() => {
               dispatch(deleteJob(_id));
             }}

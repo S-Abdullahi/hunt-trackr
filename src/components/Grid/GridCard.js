@@ -57,7 +57,7 @@ const GridCard = ({
           {jobDetail?.map((detail) => {
             const { title, icon } = detail;
             return (
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-2 text-sm" key={title}>
                 {icon} {title}
               </div>
             );
