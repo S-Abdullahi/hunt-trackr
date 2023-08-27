@@ -44,7 +44,7 @@ const AllJobs = () => {
   }, [search, status, jobType, sort]);
   return (
     <div className="pt-4 flex flex-col ">
-      <div className="flex items-center overflow-x-auto  gap-4 bg-white p-4 shadow-md mx-4 flex-grow">
+      <div className="flex items-center overflow-x-auto  gap-4 bg-white p-4 mx-4 flex-grow">
         <FormRow name="search" value={search} onChange={handleChange} />
         <FormSelect
           name="status"
