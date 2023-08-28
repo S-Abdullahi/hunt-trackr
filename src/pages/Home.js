@@ -2,28 +2,37 @@ import React from "react";
 import { GrBug } from "react-icons/gr";
 import { BsBagCheck } from "react-icons/bs";
 import { MdOutlinePendingActions } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllStats } from "../Features/users/allJobs/allJobsSlice";
 
 const Home = () => {
+  const dispatch = useDispatch()
+  const {defaultStat} = useSelector((store)=>store.allJobs)
+  const {declined, pending, interview} = defaultStat
   const statDetail = [
     {
       title: "Pending Applications",
       icon: <MdOutlinePendingActions />,
-      value: 12,
+      value: pending,
       color: 'bg-yellow-200'
     },
     {
       title: "Interview Applications",
       icon: <BsBagCheck />,
-      value: 12,
+      value: interview,
       color: 'bg-green-200'
     },
     {
       title: "Declined Applications",
       icon: <GrBug />,
-      value: 12,
+      value: declined,
       color: 'bg-red-200'
     },
   ];
+
+  React.useEffect(()=>{
+    dispatch(getAllStats())
+  },[])
 
   return (
     <div className="m-4">

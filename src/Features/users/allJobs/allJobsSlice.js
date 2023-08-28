@@ -12,6 +12,7 @@ const initialParams = {
 const initialState = {
   isLoading: false,
   jobs: [],
+  defaultStat: {},
   ...initialParams,
 };
 
@@ -35,6 +36,19 @@ export const getAllJobs = createAsyncThunk(
     }
   }
 );
+
+export const getAllStats = createAsyncThunk('alljob/getStats', async (_, thunkAPI)=>{
+  try {
+    const resp = await customFetch.get('jobs/stats', {
+      headers: {
+        authorization: `Bearer ${thunkAPI.getState().user.user.token}`
+      }
+    })
+    return resp.data
+  }catch(error){
+    return thunkAPI.rejectWithValue(error.response.data.msg);
+  }
+})
 
 
 export const allJobsSlice = createSlice({
@@ -60,6 +74,14 @@ export const allJobsSlice = createSlice({
     [getAllJobs.rejected]: (state, { payload }) => {
       state.isLoading = false;
     },
+    [getAllStats.pending]: (state) =>{
+      state.isLoading = true;
+    },
+    [getAllStats.fulfilled]: (state, { payload }) => {
+      state.isLoading = true
+      state.defaultStat = payload.defaultStats
+      console.log(payload)
+    }
   },
 });
 

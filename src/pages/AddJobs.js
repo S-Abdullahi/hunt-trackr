@@ -57,7 +57,7 @@ const AddJobs = () => {
     <div className="flex justify-center items-center pt-10">
       <div className="bg-white p-4 w-[80%] sm:w-[60%] md:w-1/2 shadow-md">
         <p className="text-center text-lg mb-6">{isEditing ? 'Edit Job' : 'Add Job'}</p>
-        <form className="flex flex-col" onSubmit={handleSubmit}>
+        <form className="flex flex-col" >
           <FormRow name="position" value={position} onChange={handleOnChange} />
           <FormRow name="company" value={company} onChange={handleOnChange} />
           <FormRow
@@ -84,7 +84,7 @@ const AddJobs = () => {
               Clear
             </button>
             <button
-              type="submit"
+              onClick={()=>{handleSubmit()}}
               className="rounded-sm text-white bg-[#fd5732] py-2 w-full"
             >
               {isLoading ? (isEditing ? "updating...": 'creating...') : "Submit"}
