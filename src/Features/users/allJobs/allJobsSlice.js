@@ -13,6 +13,7 @@ const initialState = {
   isLoading: false,
   jobs: [],
   defaultStat: {},
+  monthlyApplications: [],
   ...initialParams,
 };
 
@@ -80,6 +81,7 @@ export const allJobsSlice = createSlice({
     [getAllStats.fulfilled]: (state, { payload }) => {
       state.isLoading = true
       state.defaultStat = payload.defaultStats
+      state.monthlyApplications = payload.monthlyApplications
       console.log(payload)
     }
   },
