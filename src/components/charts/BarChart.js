@@ -15,13 +15,13 @@ const BarChartDisplay = () => {
   const { monthlyApplications } = useSelector((store) => store.allJobs);
   return (
     <ResponsiveContainer>
-      <BarChart width={730} height={250} data={monthlyApplications}>
+      <BarChart width={730} height={250} data={monthlyApplications} barSize={40}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="count" fill="#82ca9d" />
+        <Bar dataKey="count" fill="#fd5732" />
       </BarChart>
     </ResponsiveContainer>
   );

@@ -8,6 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Legend
 } from "recharts";
 
 const AreaChartDisplay = () => {
@@ -19,6 +20,7 @@ const AreaChartDisplay = () => {
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
+        <Legend />
         <Area
           type="monotone"
           dataKey="count"

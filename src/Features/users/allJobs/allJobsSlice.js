@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import customFetch from "../../../axios";
+import { logOut } from "../UserSlice";
 
 const initialParams = {
   search: "",
@@ -33,24 +34,35 @@ export const getAllJobs = createAsyncThunk(
       });
       return resp.data;
     } catch (error) {
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        return thunkAPI.rejectWithValue("Unauthorized! Logging out...");
+      }
       return thunkAPI.rejectWithValue(error.response.data.msg);
     }
   }
 );
 
-export const getAllStats = createAsyncThunk('alljob/getStats', async (_, thunkAPI)=>{
-  try {
-    const resp = await customFetch.get('jobs/stats', {
-      headers: {
-        authorization: `Bearer ${thunkAPI.getState().user.user.token}`
+export const getAllStats = createAsyncThunk(
+  "alljob/getStats",
+  async (_, thunkAPI) => {
+    try {
+      const resp = await customFetch.get("jobs/stats", {
+        headers: {
+          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
+        },
+      });
+      return resp.data;
+    } catch (error) {
+      if (error.response.status === 401) {
+        thunkAPI.dispatch(logOut());
+        return thunkAPI.rejectWithValue("Unauthorized! Logging out...");
       }
-    })
-    return resp.data
-  }catch(error){
-    return thunkAPI.rejectWithValue(error.response.data.msg);
-  }
-})
 
+      return thunkAPI.rejectWithValue(error.response.data.msg);
+    }
+  }
+);
 
 export const allJobsSlice = createSlice({
   name: "allJobs",
@@ -75,15 +87,15 @@ export const allJobsSlice = createSlice({
     [getAllJobs.rejected]: (state, { payload }) => {
       state.isLoading = false;
     },
-    [getAllStats.pending]: (state) =>{
+    [getAllStats.pending]: (state) => {
       state.isLoading = true;
     },
     [getAllStats.fulfilled]: (state, { payload }) => {
-      state.isLoading = true
-      state.defaultStat = payload.defaultStats
-      state.monthlyApplications = payload.monthlyApplications
-      console.log(payload)
-    }
+      state.isLoading = true;
+      state.defaultStat = payload.defaultStats;
+      state.monthlyApplications = payload.monthlyApplications;
+      console.log(payload);
+    },
   },
 });
 

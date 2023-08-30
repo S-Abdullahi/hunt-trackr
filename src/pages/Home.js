@@ -61,13 +61,15 @@ const Home = () => {
         })}
       </div>
       <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-white p-3 text-center rounded ">
-          <p>Area Chart</p>
-          <AreaChartDisplay />
+        <div className="bg-white p-3 text-center rounded w-full">
+          <p className="mb-2">Area Chart</p>
+          <div className="h-72">
+            <AreaChartDisplay />
+          </div>
         </div>
-        <div className="bg-white p-3 text-center rounded-[2px] shadow w-full h-72">
+        <div className="bg-white p-3 text-center rounded-[2px] w-full">
           <p className="mb-2">Bar Chart</p>
-          <div>
+          <div className="h-72">
             <BarChartDisplay />
           </div>
         </div>
