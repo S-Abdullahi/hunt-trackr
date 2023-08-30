@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { toastPosition } from "../helper";
 import Loader from "../components/loader";
 import { editJob } from "../Features/users/addJobs/AddJobsSlice";
+import { handleClear } from "../Features/users/addJobs/AddJobsSlice";
 
 const AddJobs = () => {
   const {
@@ -49,15 +50,17 @@ const AddJobs = () => {
           },
         })
       );
-      return
+      return;
     }
     dispatch(addJob({ position, company, jobLocation, status, jobType }));
   };
   return (
     <div className="flex justify-center items-center pt-10">
       <div className="bg-white p-4 w-[80%] sm:w-[60%] md:w-1/2 shadow-md">
-        <p className="text-center text-lg mb-6">{isEditing ? 'Edit Job' : 'Add Job'}</p>
-        <form className="flex flex-col" >
+        <p className="text-center text-lg mb-6">
+          {isEditing ? "Edit Job" : "Add Job"}
+        </p>
+        <form className="flex flex-col" onSubmit={handleSubmit}>
           <FormRow name="position" value={position} onChange={handleOnChange} />
           <FormRow name="company" value={company} onChange={handleOnChange} />
           <FormRow
@@ -80,14 +83,22 @@ const AddJobs = () => {
             />
           </div>
           <div className="flex justify-between gap-4">
-            <button className="border rounded-sm py-2 bg-transparent w-full">
+            <span
+              className="border rounded-sm py-2 bg-transparent w-full text-center cursor-pointer"
+              onClick={() => dispatch(handleClear())}
+            >
               Clear
-            </button>
+            </span>
             <button
-              onClick={()=>{handleSubmit()}}
+              type="submit"
+              onClick={() => {}}
               className="rounded-sm text-white bg-[#fd5732] py-2 w-full"
             >
-              {isLoading ? (isEditing ? "updating...": 'creating...') : "Submit"}
+              {isLoading
+                ? isEditing
+                  ? "updating..."
+                  : "creating..."
+                : "Submit"}
             </button>
           </div>
         </form>

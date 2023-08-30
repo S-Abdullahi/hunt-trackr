@@ -80,7 +80,6 @@ export const allJobsSlice = createSlice({
     },
     changePage: (state, {payload}) =>{
       state.page = payload
-      console.log(payload)
     }
   },
   extraReducers: {
