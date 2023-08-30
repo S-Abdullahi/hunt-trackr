@@ -7,6 +7,9 @@ const initialParams = {
   status: "all",
   jobType: "all",
   sort: "lastest",
+  numberOfPages: 1,
+  totalJobs: 0,
+  page: 1,
   sortOption: ["latest", "oldest", "a-z", "z-a"],
 };
 
@@ -22,8 +25,8 @@ export const getAllJobs = createAsyncThunk(
   "jobs/getAllJobs",
   async (_, thunkAPI) => {
     try {
-      const { search, status, jobType, sort } = thunkAPI.getState().allJobs;
-      let url = `/jobs?status=${status}&jobType=${jobType}&sort=${sort}`;
+      const { search, status, jobType, sort, page } = thunkAPI.getState().allJobs;
+      let url = `/jobs?status=${status}&jobType=${jobType}&sort=${sort}&page=${page}`;
       if (search) {
         url = url + `&search=${search}`;
       }
@@ -75,14 +78,22 @@ export const allJobsSlice = createSlice({
     clearSearchState: (state) => {
       return { ...state, ...initialParams };
     },
+    changePage: (state, {payload}) =>{
+      state.page = payload
+      console.log(payload)
+    }
   },
   extraReducers: {
     [getAllJobs.pending]: (state) => {
       state.isLoading = true;
     },
     [getAllJobs.fulfilled]: (state, { payload }) => {
+      const { jobs, numOfPages, totalJobs } = payload;
+      console.log(payload);
       state.isLoading = false;
-      state.jobs = payload?.jobs;
+      state.jobs = jobs;
+      state.numberOfPages = numOfPages;
+      state.totalJobs = totalJobs;
     },
     [getAllJobs.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -100,4 +111,4 @@ export const allJobsSlice = createSlice({
 });
 
 export default allJobsSlice.reducer;
-export const { handleSearch, clearSearchState } = allJobsSlice.actions;
+export const { handleSearch, clearSearchState, changePage } = allJobsSlice.actions;
