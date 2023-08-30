@@ -7,9 +7,6 @@ const initialParams = {
   status: "all",
   jobType: "all",
   sort: "lastest",
-  numberOfPages: 1,
-  totalJobs: 0,
-  page: 1,
   sortOption: ["latest", "oldest", "a-z", "z-a"],
 };
 
@@ -18,6 +15,9 @@ const initialState = {
   jobs: [],
   defaultStat: {},
   monthlyApplications: [],
+  numberOfPages: 1,
+  totalJobs: 0,
+  page: 1,
   ...initialParams,
 };
 

@@ -8,15 +8,18 @@ const Pagination = () => {
   const { totalJobs, numberOfPages, page } = useSelector(
     (store) => store.allJobs
   );
-  const pageArray = Array.from({ length: 1 }, (_, index) => index + 1);
+  const pageArray = Array.from(
+    { length: numberOfPages },
+    (_, index) => index + 1
+  );
   const [pageNumber, setPageNumber] = React.useState(page);
-  console.log(pageArray);
 
   const nextPage = () => {
     let next = page + 1;
     if (next > numberOfPages) {
       next = numberOfPages;
     }
+    setPageNumber(next);
     dispatch(changePage(next));
   };
 
@@ -25,6 +28,7 @@ const Pagination = () => {
     if (page <= 1) {
       previous = 1;
     }
+    setPageNumber(previous);
     dispatch(changePage(previous));
   };
   return (
@@ -35,7 +39,14 @@ const Pagination = () => {
           onClick={() => prevPage()}
         />
         {pageArray.map((item, i) => (
-          <button key={item} onClick={dispatch(changePage(item))}>
+          <button
+            key={item}
+            onClick={() => {
+              dispatch(changePage(item));
+              setPageNumber(item);
+            }}
+            className={`${pageNumber === item && "bg-gray-100 border-[1px] border-gray-400 px-1 rounded"}`}
+          >
             {item}
           </button>
         ))}

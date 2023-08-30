@@ -7,7 +7,7 @@ import EmptyData from "../EmptyData";
 import Pagination from "../Pagination";
 
 const DataTable = ({ jobs }) => {
-  const { isLoading } = useSelector((store) => store.allJobs);
+  const { isLoading, numberOfPages } = useSelector((store) => store.allJobs);
   return (
     <table className="flex-grow items-center bg-white rounded-sm mx-4 mt-2">
       <TableHead />
@@ -23,7 +23,7 @@ const DataTable = ({ jobs }) => {
           return <TableRow {...job} key={job?._id} />;
         })
       )}
-      <Pagination/>
+      {numberOfPages > 1 && <Pagination />}
     </table>
   );
 };

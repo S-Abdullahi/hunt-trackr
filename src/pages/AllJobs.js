@@ -15,7 +15,7 @@ import { TfiViewGrid, TfiMenuAlt } from "react-icons/tfi";
 
 
 const AllJobs = () => {
-  const { search, status, jobType, sortOption, sort, jobs } = useSelector(
+  const { search, status, jobType, sortOption, sort, jobs,  totalJobs, page } = useSelector(
     (store) => store.allJobs
   );
   const [displayView, setDisplayView] = React.useState("table");
@@ -41,7 +41,7 @@ const AllJobs = () => {
 
   React.useEffect(() => {
     dispatch(getAllJobs());
-  }, [search, status, jobType, sort]);
+  }, [search, status, jobType, sort, page]);
   return (
     <div className="pt-4 flex flex-col ">
       <div className="flex items-center overflow-x-auto  gap-4 bg-white p-4 mx-4 flex-grow">
@@ -77,9 +77,9 @@ const AllJobs = () => {
       <div className="ml-4 flex items-center gap-3">
         <div className="mt-3">
           {" "}
-          {`${jobs.length} Job${jobs.length > 1 ? "s" : ""} Found`}
+          {`${ totalJobs} Job${ totalJobs > 1 ? "s" : ""} Found`}
         </div>
-        {jobs.length > 0 && (
+        { totalJobs > 0 && (
           <div className="">
             {displayOption.map((view) => (
               <button

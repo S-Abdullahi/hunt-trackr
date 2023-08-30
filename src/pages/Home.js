@@ -16,27 +16,31 @@ const Home = () => {
   const dispatch = useDispatch();
   const { defaultStat, jobs } = useSelector((store) => store.allJobs);
   const { declined, pending, interview } = defaultStat;
+
+  const smallLoader = () => {
+    return (
+      <div className="w-[10%]">
+        <Loader />
+      </div>
+    );
+  };
   const statDetail = [
     {
       title: "Pending Applications",
       icon: <MdOutlinePendingActions />,
-      value: pending || (
-        <div className="w-[10%]">
-          <Loader />
-        </div>
-      ),
+      value: pending || smallLoader(),
       color: "bg-yellow-200",
     },
     {
       title: "Interview Applications",
       icon: <BsBagCheck />,
-      value: interview,
+      value: interview || smallLoader(),
       color: "bg-green-200",
     },
     {
       title: "Declined Applications",
       icon: <GrBug />,
-      value: declined,
+      value: declined || smallLoader(),
       color: "bg-red-200",
     },
   ];
