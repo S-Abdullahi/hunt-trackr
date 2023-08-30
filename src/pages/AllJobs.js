@@ -13,11 +13,9 @@ import GridView from "../components/Grid/GridView";
 import { GrTable } from "react-icons/gr";
 import { TfiViewGrid, TfiMenuAlt } from "react-icons/tfi";
 
-
 const AllJobs = () => {
-  const { search, status, jobType, sortOption, sort, jobs,  totalJobs, page } = useSelector(
-    (store) => store.allJobs
-  );
+  const { search, status, jobType, sortOption, sort, jobs, totalJobs, page } =
+    useSelector((store) => store.allJobs);
   const [displayView, setDisplayView] = React.useState("table");
   const displayOption = [
     {
@@ -77,9 +75,9 @@ const AllJobs = () => {
       <div className="ml-4 flex items-center gap-3">
         <div className="mt-3">
           {" "}
-          {`${ totalJobs} Job${ totalJobs > 1 ? "s" : ""} Found`}
+          {`${totalJobs} Job${totalJobs > 1 ? "s" : ""} Found`}
         </div>
-        { totalJobs > 0 && (
+        {totalJobs > 0 && (
           <div className="">
             {displayOption.map((view) => (
               <button
@@ -96,12 +94,13 @@ const AllJobs = () => {
           </div>
         )}
       </div>
-
-      {displayView === "table" ? (
-        <DataTable jobs={jobs} />
-      ) : (
-        <GridView jobs={jobs} />
-      )}
+      <div className="overflow-x-auto">
+        {displayView === "table" ? (
+          <DataTable jobs={jobs} />
+        ) : (
+          <GridView jobs={jobs} />
+        )}
+      </div>
     </div>
   );
 };

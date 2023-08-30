@@ -35,7 +35,7 @@ const Pagination = () => {
     <div className="my-4 flex justify-end items-center mr-6 gap-4 text-gray-500">
       <div className="flex justify-between items-center gap-4">
         <BiChevronLeft
-          className="text-xl cursor-pointer"
+          className="text-xl cursor-pointer hover:bg-gray-50 px-1 rounded border-[1px]"
           onClick={() => prevPage()}
         />
         {pageArray.map((item, i) => (
@@ -45,13 +45,16 @@ const Pagination = () => {
               dispatch(changePage(item));
               setPageNumber(item);
             }}
-            className={`${pageNumber === item && "bg-gray-100 border-[1px] border-gray-400 px-1 rounded"}`}
+            className={`${
+              pageNumber === item &&
+              "bg-gray-100 border-[1px] border-gray-400 px-1"
+            } hover:bg-gray-50 px-1 rounded border-[1px]`}
           >
             {item}
           </button>
         ))}
         <BiChevronRight
-          className="text-xl cursor-pointer"
+          className="text-xl cursor-pointer hover:bg-gray-50 px-1 rounded border-[1px]"
           onClick={() => nextPage()}
         />
       </div>
