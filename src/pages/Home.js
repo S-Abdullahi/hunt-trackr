@@ -3,19 +3,28 @@ import { GrBug } from "react-icons/gr";
 import { BsBagCheck } from "react-icons/bs";
 import { MdOutlinePendingActions } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllStats } from "../Features/users/allJobs/allJobsSlice";
+import {
+  getAllJobs,
+  getAllStats,
+} from "../Features/users/allJobs/allJobsSlice";
 import BarChartDisplay from "../components/charts/BarChart";
 import AreaChartDisplay from "../components/charts/AreaChart";
+import EmptyData from "../components/EmptyData";
+import Loader from "../components/loader";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { defaultStat } = useSelector((store) => store.allJobs);
+  const { defaultStat, jobs } = useSelector((store) => store.allJobs);
   const { declined, pending, interview } = defaultStat;
   const statDetail = [
     {
       title: "Pending Applications",
       icon: <MdOutlinePendingActions />,
-      value: pending,
+      value: pending || (
+        <div className="w-[10%]">
+          <Loader />
+        </div>
+      ),
       color: "bg-yellow-200",
     },
     {
@@ -34,6 +43,7 @@ const Home = () => {
 
   React.useEffect(() => {
     dispatch(getAllStats());
+    dispatch(getAllJobs());
   }, []);
 
   return (
@@ -64,13 +74,13 @@ const Home = () => {
         <div className="bg-white p-3 text-center rounded w-full">
           <p className="mb-2">Area Chart</p>
           <div className="h-72">
-            <AreaChartDisplay />
+            {jobs.length < 1 ? <EmptyData /> : <AreaChartDisplay />}
           </div>
         </div>
         <div className="bg-white p-3 text-center rounded-[2px] w-full">
           <p className="mb-2">Bar Chart</p>
           <div className="h-72">
-            <BarChartDisplay />
+            {jobs.length < 1 ? <EmptyData /> : <BarChartDisplay />}
           </div>
         </div>
       </div>
