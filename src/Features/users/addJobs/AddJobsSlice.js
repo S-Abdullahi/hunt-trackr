@@ -3,6 +3,7 @@ import customFetch from "../../../axios";
 import { toastPosition } from "../../../helper";
 import { toast } from "react-toastify";
 import { getAllJobs } from "../allJobs/allJobsSlice";
+import { headerAuth } from "../../../axios";
 
 const initialState = {
   isLoading: false,
@@ -20,11 +21,7 @@ export const addJob = createAsyncThunk(
   "addJob/addNewJob",
   async (job, thunkAPI) => {
     try {
-      const resp = await customFetch.post("/jobs", job, {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      });
+      const resp = await customFetch.post("/jobs", job, headerAuth(thunkAPI));
       thunkAPI.dispatch(handleClear());
       return resp.data;
     } catch (error) {
@@ -38,11 +35,7 @@ export const editJob = createAsyncThunk(
   async (jobPayload, thunkAPI) => {
     const { jobId, job } = jobPayload;
     try {
-      const resp = await customFetch.patch(`/jobs/${jobId}`, job, {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      });
+      const resp = await customFetch.patch(`/jobs/${jobId}`, job, headerAuth(thunkAPI));
       thunkAPI.dispatch(handleClear());
       return resp.data;
     } catch (error) {
@@ -55,11 +48,7 @@ export const deleteJob = createAsyncThunk(
   "allJob/deleteJob",
   async (jobId, thunkAPI) => {
     try {
-      const resp = await customFetch.delete(`/jobs/${jobId}`, {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      });
+      const resp = await customFetch.delete(`/jobs/${jobId}`, headerAuth(thunkAPI));
       thunkAPI.dispatch(getAllJobs());
       return resp.data;
     } catch (error) {

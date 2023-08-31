@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import customFetch from "../../../axios";
 import { logOut } from "../UserSlice";
+import { headerAuth } from "../../../axios";
 
 const initialParams = {
   search: "",
@@ -25,16 +26,13 @@ export const getAllJobs = createAsyncThunk(
   "jobs/getAllJobs",
   async (_, thunkAPI) => {
     try {
-      const { search, status, jobType, sort, page } = thunkAPI.getState().allJobs;
+      const { search, status, jobType, sort, page } =
+        thunkAPI.getState().allJobs;
       let url = `/jobs?status=${status}&jobType=${jobType}&sort=${sort}&page=${page}`;
       if (search) {
         url = url + `&search=${search}`;
       }
-      const resp = await customFetch.get(url, {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      });
+      const resp = await customFetch.get(url, headerAuth(thunkAPI));
       return resp.data;
     } catch (error) {
       if (error.response.status === 401) {
@@ -50,11 +48,7 @@ export const getAllStats = createAsyncThunk(
   "alljob/getStats",
   async (_, thunkAPI) => {
     try {
-      const resp = await customFetch.get("jobs/stats", {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      });
+      const resp = await customFetch.get("jobs/stats", headerAuth(thunkAPI));
       return resp.data;
     } catch (error) {
       if (error.response.status === 401) {
@@ -78,9 +72,9 @@ export const allJobsSlice = createSlice({
     clearSearchState: (state) => {
       return { ...state, ...initialParams };
     },
-    changePage: (state, {payload}) =>{
-      state.page = payload
-    }
+    changePage: (state, { payload }) => {
+      state.page = payload;
+    },
   },
   extraReducers: {
     [getAllJobs.pending]: (state) => {
@@ -108,4 +102,5 @@ export const allJobsSlice = createSlice({
 });
 
 export default allJobsSlice.reducer;
-export const { handleSearch, clearSearchState, changePage } = allJobsSlice.actions;
+export const { handleSearch, clearSearchState, changePage } =
+  allJobsSlice.actions;

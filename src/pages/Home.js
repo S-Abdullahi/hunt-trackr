@@ -91,7 +91,7 @@ const Home = () => {
         <div className="bg-white p-3 text-center rounded-[2px] w-full">
           <p className="mb-2">Bar Chart</p>
           <div className="h-72 flex justify-center items-center">
-            {true ? (
+            {isLoading ? (
               <Loader size='medium'/>
             ) : jobs.length < 1 ? (
               <EmptyData />

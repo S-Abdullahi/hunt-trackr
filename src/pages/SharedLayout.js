@@ -119,7 +119,7 @@ const SharedLayout = () => {
       </div>
       {profileModal && (
         <div className="fixed top-10 right-5 bg-white shadow text-xs py-3 px-4 rounded z-50 flex flex-col gap-3">
-          <p className="text-gray-400">{user.name}</p>
+          <p className="text-gray-400">Hello, {user.name}</p>
           <Link to="/profile" onClick={() => setProfileModal(false)}>
             Profile
           </Link>
