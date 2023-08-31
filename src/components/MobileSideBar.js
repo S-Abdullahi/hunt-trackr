@@ -40,7 +40,7 @@ const MobileSideBar = ({ open, setOpenSideBar }) => {
   return (
     <div className="relative">
       <div
-        className={`flex flex-col justify-between bg-red-200 pt-2 z-30 border-t-[1px] md:hidden fixed h-screen top-0 ${
+        className={`flex flex-col justify-between pt-2 bg-gray-100 z-30 border-t-[1px] md:hidden fixed h-screen top-0 ${
           open ? `m-0 w-1/2 ${sideTransition}` : `-ml-[300px] ${sideTransition}`
         }`}
       >
