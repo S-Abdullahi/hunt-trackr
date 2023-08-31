@@ -65,6 +65,7 @@ const AddJobs = () => {
           <FormRow name="company" value={company} onChange={handleOnChange} />
           <FormRow
             name="jobLocation"
+            label='Job Location'
             value={jobLocation}
             onChange={handleOnChange}
           />
@@ -77,6 +78,7 @@ const AddJobs = () => {
             />
             <FormSelect
               name="jobType"
+              label= "Job Type"
               selectOptions={jobTypeOption}
               onChange={handleOnChange}
               value={jobType}

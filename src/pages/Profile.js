@@ -30,6 +30,7 @@ const Profile = () => {
           />
           <FormRow
             name="lastName"
+            label='Last Name'
             value={formData?.lastName}
             onChange={handleChange}
           />

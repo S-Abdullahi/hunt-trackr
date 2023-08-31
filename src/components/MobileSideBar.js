@@ -66,7 +66,10 @@ const MobileSideBar = ({ open, setOpenSideBar }) => {
         <Link
           to="/login"
           className="flex items-center justify-center pb-6 text-red-400 gap-2"
-          onClick={() => dispatch(logOut())}
+          onClick={() => {
+            dispatch(logOut());
+            setOpenSideBar(false)
+          }}
         >
           <MdLogout /> Logout
         </Link>
