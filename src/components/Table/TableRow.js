@@ -27,17 +27,17 @@ const TableRow = ({
   }
   return (
     <tbody>
-      <tr className="grid  grid-cols-4 sm:grid-cols-6 text-left px-3 py-4 text-sm text-gray-600 border-b-[1px] border-gray-200 cursor-pointer hover:bg-gray-100">
+      <tr className="grid grid-cols-6 text-left px-3 py-4 text-sm text-gray-600 border-b-[1px] border-gray-200 cursor-pointer hover:bg-gray-100 w-[600px] sm:w-full ">
         <td>{position}</td>
         <td>{company}</td>
         <td>{jobType}</td>
-        <td className="hidden sm:flex">{jobLocation}</td>
+        <td className="">{jobLocation}</td>
         <td className="flex flex-shrink-0">
           <div className={`${statusBg} py-1 px-2 rounded-md h-8 `}>
             {status}
           </div>
         </td>
-        <td className=" hidden sm:flex justify-center gap-6 items-center">
+        <td className="flex gap-6 items-center">
           <FiEdit
             className="text-gray-400 hover:text-gray-500"
             onClick={() => {

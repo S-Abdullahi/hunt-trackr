@@ -41,8 +41,8 @@ const AllJobs = () => {
     dispatch(getAllJobs());
   }, [search, status, jobType, sort, page]);
   return (
-    <div className="pt-4 flex flex-col ">
-      <div className="flex items-center overflow-x-auto  gap-4 bg-white p-4 mx-4 flex-grow">
+    <div className="pt-4 flex flex-col mx-4 ">
+      <div className="flex items-center overflow-x-auto  gap-4 bg-white p-4 flex-grow">
         <FormRow name="search" value={search} onChange={handleChange} />
         <FormSelect
           name="status"
@@ -72,8 +72,8 @@ const AllJobs = () => {
 
       {/* view option buttons */}
 
-      <div className="ml-4 flex items-center gap-3">
-        <div className="mt-3">
+      <div className=" flex items-center gap-3">
+        <div className="mt-3 text-sm text-gray-500">
           {" "}
           {`${totalJobs} Job${totalJobs > 1 ? "s" : ""} Found`}
         </div>

@@ -9,7 +9,7 @@ import Pagination from "../Pagination";
 const DataTable = ({ jobs }) => {
   const { isLoading, numberOfPages } = useSelector((store) => store.allJobs);
   return (
-    <table className="flex-grow items-center bg-white rounded-sm mx-4 mt-2">
+    <table className="flex-grow items-center bg-white rounded-sm mt-2 overflow-x-auto sm:w-full">
       <TableHead />
 
       {isLoading ? (
