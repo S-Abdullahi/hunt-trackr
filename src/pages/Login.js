@@ -49,14 +49,14 @@ const Login = () => {
   }, [user]);
 
   return (
-    <div className="h-screen w-full bg-[#fbfbfb] flex justify-center items-center">
+    <div className="fixed h-screen w-full bg-[#fbfbfb] flex justify-center items-center">
       <div className="bg-white rounded shadow-md py-6 w-[70%] sm:w-[50%] md:w-[40%] lg:w-[25%]">
         <form className="flex flex-col p-3" onSubmit={handleSubmit}>
           <div className="flex items-center gap-2 justify-center mb-3">
             <img src={logo} alt="logo" />
             <p className="font-extrabold text-xl text-[#fd5732]">HuntTrackr</p>
           </div>
-          <h2 className="text-center text-2xl mb-4">
+          <h2 className="text-center text-xl text-gray-700 mb-4">
             {isUser ? "Login" : "Register"}
           </h2>
           {!isUser && (
@@ -91,7 +91,7 @@ const Login = () => {
               : "Register"}
           </button>
         </form>
-        <p className="px-3 text-sm">
+        <p className="px-3 text-sm text-gray-600">
           {isUser ? "Not yet registered?" : "Already registered?"}{" "}
           <span
             className="cursor-pointer text-[#c21d03]"

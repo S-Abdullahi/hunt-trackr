@@ -15,7 +15,7 @@ const Landing = () => {
     }
   }, []);
   return (
-    <div className="bg-[#fbfbfb] pt-10 px-6 lg:px-10  h-screen fixed md:relative">
+    <div className="bg-[#fbfbfb] pt-10 px-6 lg:px-10  h-screen fixed sm:relative">
       <div className="flex items-center gap-2 ">
         <img src={logo} alt="logo" />
         <p className="font-extrabold text-xl text-[#fd5732]">HuntTrackr</p>
