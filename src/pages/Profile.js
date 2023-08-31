@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../Features/users/UserSlice";
 
 const Profile = () => {
-  const { user } = useSelector((store) => store.user);
+  const { user, isLoading } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const [formData, setFormData] = React.useState({ ...user });
 
@@ -41,9 +41,9 @@ const Profile = () => {
           />
           <button
             type="submit"
-            className="bg-[#fd5732] text-white px-2 py-1 rounded hover:bg-[#fd5732e4] text-center mt-2"
+            className="bg-[#fd5732] text-white px-2 py-1 rounded hover:bg-[#fd5732e4] text-center mt-2 cursor-pointer"
           >
-            Update
+            {isLoading ? 'Updating...' : 'Update'}
           </button>
         </form>
       </div>

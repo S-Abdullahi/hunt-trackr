@@ -78,7 +78,7 @@ const AddJobs = () => {
             />
             <FormSelect
               name="jobType"
-              label= "Job Type"
+              
               selectOptions={jobTypeOption}
               onChange={handleOnChange}
               value={jobType}

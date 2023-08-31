@@ -10,7 +10,7 @@ const GridView = ({ jobs }) => {
     <div>
       {isLoading ? (
         <div className="flex justify-center mt-6">
-          <Loader />
+          <Loader size='medium'/>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mx-4 mt-5">

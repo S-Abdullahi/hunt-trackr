@@ -14,7 +14,7 @@ const DataTable = ({ jobs }) => {
 
       {isLoading ? (
         <div className="flex items-start justify-center">
-          <Loader />
+          <Loader size='medium' />
         </div>
       ) : jobs.length < 1 ? (
         <EmptyData />
