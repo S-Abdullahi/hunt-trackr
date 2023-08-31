@@ -79,8 +79,8 @@ const MobileSideBar = ({ open, setOpenSideBar }) => {
       <div
         className={`fixed h-[calc(100%-48px)] w-full bg-black z-30 ${
           open
-            ? `m-0 w-full opacity-70 ${sideTransition}`
-            : "opacity-0 ${sideTransition}"
+            ? `m-0 w-full opacity-70 transition-opacity duration-[300ms] ease-linear `
+            : "opacity-0 transition-opacity duration-[300ms] ease-linear -ml-[300px]"
         }`}
         onClick={() => setOpenSideBar(false)}
       ></div>
