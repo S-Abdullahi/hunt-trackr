@@ -1,5 +1,4 @@
 import React from "react";
-import Loader from "../components/loader";
 import FormRow from "../components/FormRow";
 import FormSelect from "../components/FormSelect";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,7 +9,6 @@ import {
   clearSearchState,
 } from "../Features/users/allJobs/allJobsSlice";
 import GridView from "../components/Grid/GridView";
-import { GrTable } from "react-icons/gr";
 import { TfiViewGrid, TfiMenuAlt } from "react-icons/tfi";
 
 const AllJobs = () => {

@@ -41,7 +41,7 @@ const Profile = () => {
           />
           <button
             type="submit"
-            className="bg-[#fd5732] text-white px-2 py-1 rounded hover:bg-[#fd5732e4] text-center mt-2 cursor-pointer"
+            className="bg-[#fd5732] text-white px-2 py-1 rounded hover:bg-[#fd5732e4] text-center mt-2"
           >
             {isLoading ? 'Updating...' : 'Update'}
           </button>

@@ -4,10 +4,7 @@ import { ImProfile } from "react-icons/im";
 import { CgFolderAdd } from "react-icons/cg";
 import { MdOutlineBallot } from "react-icons/md";
 import { MdLogout } from "react-icons/md";
-import { Link, Outlet } from "react-router-dom";
-import logo from "../assets/logo.png";
-import { BiMenu } from "react-icons/bi";
-import { BsPersonCircle } from "react-icons/bs";
+import { Link} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOut } from "../Features/users/UserSlice";
 
@@ -77,9 +74,9 @@ const MobileSideBar = ({ open, setOpenSideBar }) => {
       {/* side bar transparent background */}
 
       <div
-        className={`fixed h-screen top-0 w-full bg-black z-25 ${
+        className={`w-full bg-black z-25 ${
           open
-            ? `m-0 w-full opacity-70 transition-opacity duration-[300ms] ease-linear `
+            ? `fixed h-screen m-0 w-full opacity-70 transition-opacity duration-[300ms] ease-linear `
             : "opacity-0 transition-opacity duration-[300ms] ease-linear -ml-[300px]"
         }`}
         onClick={() => setOpenSideBar(false)}

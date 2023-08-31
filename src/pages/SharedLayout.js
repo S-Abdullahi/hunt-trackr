@@ -61,7 +61,7 @@ const SharedLayout = () => {
               return (
                 <li
                   className={`text-base mb-4 hover:bg-[#fd5732] hover:text-white pl-4 py-1 hover:ease-in-out ${
-                    activeMenu === name && "bg-[#fd5732] text-white"
+                    activeMenu === name && "bg-[#fd5732] text-white md:text-white"
                   }}`}
                   key={name}
                   onClick={() => setActiveMenu(name)}

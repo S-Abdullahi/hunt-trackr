@@ -6,7 +6,6 @@ import { addJob } from "../Features/users/addJobs/AddJobsSlice";
 import { handleChange } from "../Features/users/addJobs/AddJobsSlice";
 import { toast } from "react-toastify";
 import { toastPosition } from "../helper";
-import Loader from "../components/loader";
 import { editJob } from "../Features/users/addJobs/AddJobsSlice";
 import { handleClear } from "../Features/users/addJobs/AddJobsSlice";
 
@@ -93,7 +92,6 @@ const AddJobs = () => {
             </span>
             <button
               type="submit"
-              onClick={() => {}}
               className="rounded-sm text-white bg-[#fd5732] py-2 w-full"
             >
               {isLoading
