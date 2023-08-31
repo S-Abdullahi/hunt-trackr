@@ -100,7 +100,7 @@ export const allJobsSlice = createSlice({
       state.isLoading = true;
     },
     [getAllStats.fulfilled]: (state, { payload }) => {
-      state.isLoading = true;
+      state.isLoading = false;
       state.defaultStat = payload.defaultStats;
       state.monthlyApplications = payload.monthlyApplications;
     },
