@@ -56,7 +56,7 @@ const Home = () => {
         {statDetail.map((item) => {
           const { title, icon, value, color } = item;
           return (
-            <div className="bg-white p-3 rounded flex flex-col gap-6">
+            <div className="bg-white p-3 rounded flex flex-col gap-6" key={title}>
               <div className="flex justify-between item-center">
                 <span
                   className={`text-2xl ${color} p-1 rounded-full w-10 h-10 flex justify-center items-center`}

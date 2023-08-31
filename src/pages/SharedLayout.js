@@ -84,7 +84,7 @@ const SharedLayout = () => {
               onClick={() => setOpenSideBar(!openSideBar)}
             />
           </div>
-          <div className="text-base hidden md:flex items-center gap-1 ">
+          <div className="text-base hidden md:flex items-center gap-1">
             <BsPersonCircle /> {user.name}
           </div>
         </div>

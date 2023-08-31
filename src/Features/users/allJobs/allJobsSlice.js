@@ -88,7 +88,6 @@ export const allJobsSlice = createSlice({
     },
     [getAllJobs.fulfilled]: (state, { payload }) => {
       const { jobs, numOfPages, totalJobs } = payload;
-      console.log(payload);
       state.isLoading = false;
       state.jobs = jobs;
       state.numberOfPages = numOfPages;
@@ -104,7 +103,6 @@ export const allJobsSlice = createSlice({
       state.isLoading = true;
       state.defaultStat = payload.defaultStats;
       state.monthlyApplications = payload.monthlyApplications;
-      console.log(payload);
     },
   },
 });
