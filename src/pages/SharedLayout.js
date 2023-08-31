@@ -118,10 +118,14 @@ const SharedLayout = () => {
         </div>
       </div>
       {profileModal && (
-        <div className="absolute top-10 right-5 bg-white shadow text-xs py-3 px-4 rounded z-50 flex flex-col gap-3">
+        <div className="fixed top-10 right-5 bg-white shadow text-xs py-3 px-4 rounded z-50 flex flex-col gap-3">
           <p className="text-gray-400">{user.name}</p>
-          <Link to="/profile" onClick={()=>setProfileModal(false)}>Profile</Link>
-            <p className="cursor-pointer" onClick={() => dispatch(logOut())}>Logout</p>
+          <Link to="/profile" onClick={() => setProfileModal(false)}>
+            Profile
+          </Link>
+          <p className="cursor-pointer" onClick={() => dispatch(logOut())}>
+            Logout
+          </p>
         </div>
       )}
     </div>
