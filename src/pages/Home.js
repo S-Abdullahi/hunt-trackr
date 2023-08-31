@@ -19,30 +19,26 @@ const Home = () => {
   );
   const { declined, pending, interview } = defaultStat;
 
-  const smallLoader = () => {
-    return (
-      <div className="w-[10%]">
-        <Loader />
-      </div>
-    );
+  const smallLoader = (size) => {
+    return <Loader size={size} />;
   };
   const statDetail = [
     {
       title: "Pending Applications",
       icon: <MdOutlinePendingActions />,
-      value: pending || smallLoader(),
+      value: pending || smallLoader("small"),
       color: "bg-yellow-200",
     },
     {
       title: "Interview Applications",
       icon: <BsBagCheck />,
-      value: interview || smallLoader(),
+      value: interview || smallLoader("small"),
       color: "bg-green-200",
     },
     {
       title: "Declined Applications",
       icon: <GrBug />,
-      value: declined || smallLoader(),
+      value: declined || smallLoader("small"),
       color: "bg-red-200",
     },
   ];
@@ -68,7 +64,7 @@ const Home = () => {
                 >
                   {icon}
                 </span>
-                <span className="text-3xl font-bold text-gray-600 ">
+                <span className="text-3xl font-bold text-gray-600 flex justify-end items-center">
                   {value}
                 </span>
               </div>
@@ -84,7 +80,7 @@ const Home = () => {
           <p className="mb-2">Area Chart</p>
           <div className="h-72 flex justify-center items-center">
             {isLoading ? (
-              smallLoader()
+              <Loader size='medium'/>
             ) : jobs.length < 1 ? (
               <EmptyData />
             ) : (
@@ -95,17 +91,16 @@ const Home = () => {
         <div className="bg-white p-3 text-center rounded-[2px] w-full">
           <p className="mb-2">Bar Chart</p>
           <div className="h-72 flex justify-center items-center">
-            {isLoading ? 
-              smallLoader()
-             : (jobs.length < 1 ? 
+            {true ? (
+              <Loader size='medium'/>
+            ) : jobs.length < 1 ? (
               <EmptyData />
-             : (
+            ) : (
               <BarChartDisplay />
-            )) }
+            )}
           </div>
         </div>
       </div>
-      
     </div>
   );
 };

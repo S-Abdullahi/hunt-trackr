@@ -40,18 +40,18 @@ const MobileSideBar = ({ open, setOpenSideBar }) => {
   return (
     <div className="relative">
       <div
-        className={`flex flex-col justify-between bg-white pt-2 z-50 border-t-[1px] md:hidden fixed h-[calc(100%-48px)] ${
+        className={`flex flex-col justify-between bg-red-200 pt-2 z-30 border-t-[1px] md:hidden fixed h-screen top-0 ${
           open ? `m-0 w-1/2 ${sideTransition}` : `-ml-[300px] ${sideTransition}`
         }`}
       >
         <div>
-          <ul className="mt-16">
+          <ul className="mt-28">
             {sideMenuItem.map((item) => {
               const { name, url, icon } = item;
               return (
                 <li
                   key={name}
-                  className="text-sm mb-4 hover:bg-[#fd5732] hover:text-white pl-4 py-1 hover:ease-in-out"
+                  className="text-sm mb-6 hover:bg-[#fd5732] hover:text-white pl-4 py-1 hover:ease-in-out"
                   onClick={() => setOpenSideBar(false)}
                 >
                   <Link to={url} className="flex items-center gap-2">
@@ -77,7 +77,7 @@ const MobileSideBar = ({ open, setOpenSideBar }) => {
       {/* side bar transparent background */}
 
       <div
-        className={`fixed h-[calc(100%-48px)] w-full bg-black z-30 ${
+        className={`fixed h-screen top-0 w-full bg-black z-25 ${
           open
             ? `m-0 w-full opacity-70 transition-opacity duration-[300ms] ease-linear `
             : "opacity-0 transition-opacity duration-[300ms] ease-linear -ml-[300px]"

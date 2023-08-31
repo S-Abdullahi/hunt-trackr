@@ -83,7 +83,7 @@ const SharedLayout = () => {
         </Link>
       </div>
       <div className={"col-span-12 md:col-span-10 relative "}>
-        <div className="h-12 flex items-center justify-between md:justify-between px-4 bg-white sticky top-0 z-30">
+        <div className="h-12 flex items-center justify-between md:justify-between px-4 bg-white sticky top-0 z-40">
           {/* header bar logo for mobile screen */}
           <div className="flex items-center gap-2 mb-3 mt-2 md:hidden">
             <img src={logo} alt="logo" className="w-8" />
