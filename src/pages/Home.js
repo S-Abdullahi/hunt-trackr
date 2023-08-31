@@ -65,7 +65,7 @@ const Home = () => {
                   {icon}
                 </span>
                 <span className="text-3xl font-bold text-gray-600 flex justify-end items-center">
-                  {value}
+                  {isLoading ? smallLoader("small") : value}
                 </span>
               </div>
               <div className="flex justify-end text-gray-600 text-sm">
@@ -80,7 +80,7 @@ const Home = () => {
           <p className="mb-2">Area Chart</p>
           <div className="h-72 flex justify-center items-center">
             {isLoading ? (
-              <Loader size='medium'/>
+              <Loader size="medium" />
             ) : jobs.length < 1 ? (
               <EmptyData />
             ) : (
@@ -92,7 +92,7 @@ const Home = () => {
           <p className="mb-2">Bar Chart</p>
           <div className="h-72 flex justify-center items-center">
             {isLoading ? (
-              <Loader size='medium'/>
+              <Loader size="medium" />
             ) : jobs.length < 1 ? (
               <EmptyData />
             ) : (
