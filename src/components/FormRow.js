@@ -15,7 +15,7 @@ const FormRow = ({ type, label, name, value, onChange }) => {
         name={name}
         value={value}
         onChange={onChange}
-        className="mb-5 px-2 h-10 rounded-sm border focus:border-[#fd5732] focus:outline-none text-[gray] w-full"
+        className="mb-5 px-2 h-10 rounded-sm border focus:border-[#fd5732] focus:outline-none text-[gray] w-full text-sm"
       />
     </div>
   );
