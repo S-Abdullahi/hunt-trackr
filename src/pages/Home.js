@@ -14,7 +14,9 @@ import Loader from "../components/loader";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { defaultStat, jobs } = useSelector((store) => store.allJobs);
+  const { defaultStat, jobs, isLoading } = useSelector(
+    (store) => store.allJobs
+  );
   const { declined, pending, interview } = defaultStat;
 
   const smallLoader = () => {
@@ -56,7 +58,10 @@ const Home = () => {
         {statDetail.map((item) => {
           const { title, icon, value, color } = item;
           return (
-            <div className="bg-white p-3 rounded flex flex-col gap-6" key={title}>
+            <div
+              className="bg-white p-3 rounded flex flex-col gap-6"
+              key={title}
+            >
               <div className="flex justify-between item-center">
                 <span
                   className={`text-2xl ${color} p-1 rounded-full w-10 h-10 flex justify-center items-center`}
@@ -77,14 +82,26 @@ const Home = () => {
       <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-white p-3 text-center rounded w-full">
           <p className="mb-2">Area Chart</p>
-          <div className="h-72">
-            {jobs.length < 1 ? <EmptyData /> : <AreaChartDisplay />}
+          <div className="h-72 flex justify-center items-center">
+            {isLoading ? (
+              smallLoader()
+            ) : jobs.length < 1 ? (
+              <EmptyData />
+            ) : (
+              <AreaChartDisplay />
+            )}
           </div>
         </div>
         <div className="bg-white p-3 text-center rounded-[2px] w-full">
           <p className="mb-2">Bar Chart</p>
-          <div className="h-72">
-            {jobs.length < 1 ? <EmptyData /> : <BarChartDisplay />}
+          <div className="h-72 flex justify-center items-center">
+            {isLoading ? 
+              smallLoader()
+             : (jobs.length < 1 ? 
+              <EmptyData />
+             : (
+              <BarChartDisplay />
+            )) }
           </div>
         </div>
       </div>
