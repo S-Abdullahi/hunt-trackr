@@ -26,19 +26,19 @@ const Home = () => {
     {
       title: "Pending Applications",
       icon: <MdOutlinePendingActions />,
-      value: pending || smallLoader("small"),
+      value: pending,
       color: "bg-yellow-200",
     },
     {
       title: "Interview Applications",
       icon: <BsBagCheck />,
-      value: interview || smallLoader("small"),
+      value: interview ,
       color: "bg-green-200",
     },
     {
       title: "Declined Applications",
       icon: <GrBug />,
-      value: declined || smallLoader("small"),
+      value: declined,
       color: "bg-red-200",
     },
   ];
