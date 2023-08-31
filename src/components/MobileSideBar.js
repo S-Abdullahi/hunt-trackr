@@ -37,7 +37,7 @@ const MobileSideBar = ({ open, setOpenSideBar }) => {
   return (
     <div className="relative">
       <div
-        className={`flex flex-col justify-between pt-2 bg-gray-100 z-30 border-t-[1px] md:hidden fixed h-screen top-0 ${
+        className={`flex flex-col justify-between pt-2 bg-gray-100 z-[31] border-t-[1px] md:hidden fixed h-screen top-0 ${
           open ? `m-0 w-1/2 ${sideTransition}` : `-ml-[300px] ${sideTransition}`
         }`}
       >
@@ -74,9 +74,9 @@ const MobileSideBar = ({ open, setOpenSideBar }) => {
       {/* side bar transparent background */}
 
       <div
-        className={`w-full bg-black z-25 ${
+        className={`w-full bg-black z-30 ${
           open
-            ? `fixed h-screen m-0 w-full opacity-70 transition-opacity duration-[300ms] ease-linear `
+            ? `fixed h-screen top-0 m-0 w-full opacity-70 transition-opacity duration-[300ms] ease-linear `
             : "opacity-0 transition-opacity duration-[300ms] ease-linear -ml-[300px]"
         }`}
         onClick={() => setOpenSideBar(false)}
