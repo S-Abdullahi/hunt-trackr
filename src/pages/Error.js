@@ -7,7 +7,7 @@ const Error = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen gap-5">
       <img src={errorImage} alt="error image"  className="w-[30%]"/>
-      <button onClick={() => navigate("/login")} className="bg-[#fd5732] px-2 py-1 rounded text-white hover:bg-[#fd5732d1]">Return</button>
+      <button onClick={() => navigate("/dashboard")} className="bg-[#fd5732] px-2 py-1 rounded text-white hover:bg-[#fd5732d1]">Return</button>
     </div>
   );
 };

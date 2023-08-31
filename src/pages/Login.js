@@ -16,7 +16,7 @@ const initialFormState = {
 const Login = () => {
   const dispatch = useDispatch();
   const { isLoading, user } = useSelector((store) => store.user);
-  const [isUser, setIsUser] = React.useState(false);
+  const [isUser, setIsUser] = React.useState(true);
   const [formData, setFormData] = useState(initialFormState);
   const navigate = useNavigate();
 
@@ -91,10 +91,10 @@ const Login = () => {
               : "Register"}
           </button>
         </form>
-        <p className="px-3">
+        <p className="px-3 text-sm">
           {isUser ? "Not yet registered?" : "Already registered?"}{" "}
           <span
-            className="cursor-pointer font-bold text-[#c21d03]"
+            className="cursor-pointer text-[#c21d03]"
             onClick={() => setIsUser(!isUser)}
           >
             {isUser ? "Register" : "Login"}
