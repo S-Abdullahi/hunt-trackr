@@ -1,7 +1,9 @@
-# Getting start
+# Hunt Trackr
+
+## Overview
 This application was designed to assist job seakers to manage and easily track their job applications. 
 
-project link: [title](https://hunt-trackr.vercel.app/)
+[project link](https://hunt-trackr.vercel.app/)
 
 Click on the get started button on the landing page.
 ![image](https://github.com/S-Abdullahi/hunt-trackr/assets/99405536/82937d25-a00d-48d1-932d-cda668054647)
